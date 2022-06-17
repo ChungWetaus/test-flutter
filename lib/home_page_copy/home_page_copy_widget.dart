@@ -110,7 +110,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                                   .parent as AnimationController)
                               .forward(from: 0.0);
 
-                          await APIShowDemoCall.call();
+                          APIShowDemoCall.call();
                         },
                         text: 'Spam',
                         icon: Icon(
