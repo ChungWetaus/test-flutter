@@ -53,126 +53,95 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<ApiCallResponse>(
-      future: TestCall.call(),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
-              ),
-            ),
-          );
-        }
-        final homePageCopyTestResponse = snapshot.data;
-        return Scaffold(
-          key: scaffoldKey,
-          appBar: AppBar(
-            backgroundColor: Color(0x00FFFFFF),
-            automaticallyImplyLeading: false,
-            actions: [],
-            centerTitle: false,
-            elevation: 0,
-          ),
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Align(
-                    alignment: AlignmentDirectional(-1, -0.25),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                      child: Text(
-                        'Hi, can you test interactions for me? Thank u :\">',
-                        textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Inter',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
+    return Scaffold(
+      key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Color(0x00FFFFFF),
+        automaticallyImplyLeading: false,
+        actions: [],
+        centerTitle: false,
+        elevation: 0,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0, -1),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 1, 16, 0),
+                    child: Text(
+                      'Hi, can you test interactions for me? Thank u :\">',
+                      textAlign: TextAlign.start,
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Inter',
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ),
-                  Align(
-                    alignment: AlignmentDirectional(-1, 0),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
-                      child: Text(
-                        'Spam liên tục để xem hiệu ứng trên show nhé',
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.normal,
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.75, 0.4),
+                  child: FutureBuilder<ApiCallResponse>(
+                    future: APIShowDemoCall.call(),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: CircularProgressIndicator(
+                              color: FlutterFlowTheme.of(context).primaryColor,
                             ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.75, 0.4),
-                    child: FutureBuilder<ApiCallResponse>(
-                      future: APIShowDemoCall.call(),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: CircularProgressIndicator(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                              ),
-                            ),
-                          );
-                        }
-                        final buttonAPIShowDemoResponse = snapshot.data;
-                        return FFButtonWidget(
-                          onPressed: () async {
-                            await (animationsMap[
-                                        'buttonOnActionTriggerAnimation']
-                                    .curvedAnimation
-                                    .parent as AnimationController)
-                                .forward(from: 0.0);
+                          ),
+                        );
+                      }
+                      final buttonAPIShowDemoResponse = snapshot.data;
+                      return FFButtonWidget(
+                        onPressed: () async {
+                          await (animationsMap['buttonOnActionTriggerAnimation']
+                                  .curvedAnimation
+                                  .parent as AnimationController)
+                              .forward(from: 0.0);
 
-                            await APIShowDemoCall.call();
-                          },
-                          text: 'Spam',
-                          icon: Icon(
-                            Icons.blur_on_sharp,
-                            size: 15,
+                          await APIShowDemoCall.call();
+                        },
+                        text: 'Spam',
+                        icon: Icon(
+                          Icons.blur_on_sharp,
+                          size: 15,
+                        ),
+                        options: FFButtonOptions(
+                          width: 130,
+                          height: 130,
+                          color: Color(0xFFFF4E00),
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
                           ),
-                          options: FFButtonOptions(
-                            width: 130,
-                            height: 130,
-                            color: Color(0xFFFF4E00),
-                            textStyle:
-                                FlutterFlowTheme.of(context).subtitle2.override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: 120,
-                          ),
-                        ).animated(
-                            [animationsMap['buttonOnActionTriggerAnimation']]);
-                      },
-                    ),
+                          borderRadius: 120,
+                        ),
+                      ).animated(
+                          [animationsMap['buttonOnActionTriggerAnimation']]);
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

@@ -38,11 +38,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'HomePageCopy',
               path: 'homePageCopy',
               builder: (context, params) => HomePageCopyWidget(),
-            ),
-            FFRoute(
-              name: 'mayvees',
-              path: 'mayvees',
-              builder: (context, params) => MayveesWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

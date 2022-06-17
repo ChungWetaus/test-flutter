@@ -27,11 +27,12 @@ class APIShowDemoCall {
   static Future<ApiCallResponse> call() {
     final body = '''
 {
-  "url": "https://c695-8-21-11-11.ap.ngrok.io/remote/object/call"
+  "url": "https://ab2c-8-21-11-11.ap.ngrok.io/remote/object/call"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'API show demo',
-      apiUrl: 's5vq11681a.execute-api.us-east-1.amazonaws.com/demo/v1/enqueue',
+      apiUrl:
+          'https://s5vq11681a.execute-api.us-east-1.amazonaws.com/demo/v1/enqueue',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',
