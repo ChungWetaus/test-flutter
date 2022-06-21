@@ -32,7 +32,7 @@ class APIShowDemoCall {
     return ApiManager.instance.makeApiCall(
       callName: 'API show demo',
       apiUrl:
-          'https://s5vq11681a.execute-api.us-east-1.amazonaws.com/demo/v1/enqueue',
+          'https://zgoet81862.execute-api.ap-southeast-1.amazonaws.com/demo/v1/interaction',
       callType: ApiCallType.POST,
       headers: {
         'Content-Type': 'application/json',

@@ -105,18 +105,14 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                       final buttonAPIShowDemoResponse = snapshot.data;
                       return FFButtonWidget(
                         onPressed: () async {
-                          // await (animationsMap['buttonOnActionTriggerAnimation']
-                          //         .curvedAnimation
-                          //         .parent as AnimationController)
-                          //     .forward(from: 0.0);
+                          await (animationsMap['buttonOnActionTriggerAnimation']
+                                  .curvedAnimation
+                                  .parent as AnimationController)
+                              .forward(from: 0.0);
 
-                          APIShowDemoCall.call();
+                          await APIShowDemoCall.call();
                         },
                         text: 'Spam',
-                        icon: Icon(
-                          Icons.blur_on_sharp,
-                          size: 15,
-                        ),
                         options: FFButtonOptions(
                           width: 130,
                           height: 130,
@@ -132,6 +128,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                           ),
                           borderRadius: 120,
                         ),
+                        showLoadingIndicator: false,
                       ).animated(
                           [animationsMap['buttonOnActionTriggerAnimation']]);
                     },
