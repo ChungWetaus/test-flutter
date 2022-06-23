@@ -1,3 +1,5 @@
+import 'package:flutter_svg/svg.dart';
+
 import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -56,13 +58,14 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0x00FFFFFF),
+        backgroundColor: Color(0x00000000),
         automaticallyImplyLeading: false,
         actions: [],
         centerTitle: false,
         elevation: 0,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor:
+          Color(0x00000000), //FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -81,6 +84,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                             fontFamily: 'Inter',
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                     ),
                   ),
@@ -103,6 +107,7 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                         );
                       }
                       final buttonAPIShowDemoResponse = snapshot.data;
+
                       return FFButtonWidget(
                         onPressed: () async {
                           APIShowDemoCall.call();
@@ -111,10 +116,19 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                                   .parent as AnimationController)
                               .forward(from: 0.0);
                         },
-                        text: 'Spam',
+                        icon: Center(
+                          child: SvgPicture.asset(
+                            'assets/images/wetaus_symbol_white_transparent.svg',
+                            width: 64,
+                            height: 64,
+                            color: Colors.white,
+                          ),
+                        ),
+                        text: '',
                         options: FFButtonOptions(
                           width: 130,
                           height: 130,
+                          padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                           color: Color(0xFFFF4E00),
                           textStyle:
                               FlutterFlowTheme.of(context).subtitle2.override(

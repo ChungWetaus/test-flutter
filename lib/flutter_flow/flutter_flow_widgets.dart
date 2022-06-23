@@ -149,7 +149,7 @@ class _FFButtonWidgetState extends State<FFButtonWidget> {
                       widget.options.textStyle.color,
                 ),
           ),
-          label: textWidget,
+          label: SizedBox(),
           onPressed: onPressed,
           style: style,
         ),
