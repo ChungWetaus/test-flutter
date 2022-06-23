@@ -25,10 +25,6 @@ class TestCall {
 
 class APIShowDemoCall {
   static Future<ApiCallResponse> call() {
-    final body = '''
-{
-  "url": "https://ab2c-8-21-11-11.ap.ngrok.io/remote/object/call"
-}''';
     return ApiManager.instance.makeApiCall(
       callName: 'API show demo',
       apiUrl:
@@ -38,7 +34,7 @@ class APIShowDemoCall {
         'Content-Type': 'application/json',
       },
       params: {},
-      body: body,
+      body: '',
       bodyType: BodyType.JSON,
       returnBody: true,
     );

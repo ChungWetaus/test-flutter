@@ -105,12 +105,11 @@ class _HomePageCopyWidgetState extends State<HomePageCopyWidget>
                       final buttonAPIShowDemoResponse = snapshot.data;
                       return FFButtonWidget(
                         onPressed: () async {
+                          APIShowDemoCall.call();
                           await (animationsMap['buttonOnActionTriggerAnimation']
                                   .curvedAnimation
                                   .parent as AnimationController)
                               .forward(from: 0.0);
-
-                          await APIShowDemoCall.call();
                         },
                         text: 'Spam',
                         options: FFButtonOptions(
